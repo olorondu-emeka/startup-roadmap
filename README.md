@@ -41,7 +41,7 @@ npm/yarn run start:dev
 The project can be tested with the GraphiQL User Interface, which can be accessed in the browser via the URL: http://localhost:5000/graphql
 
 ## Manual Testing
-The project can be manually tested on the Graphiql interaface (see section above) or on Postman. The following will be helpful:
+The project can be manually tested on the **Graphiql interface** (see section above) or on **Postman**. The following will be helpful:
 - query
 
 ```js

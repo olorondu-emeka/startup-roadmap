@@ -2,6 +2,11 @@ import { Phase, Task } from "../roadmap/roadmap.model";
 
 import { RawPhase } from "./data";
 
+/**
+ * Creates a Task object from an array of task names
+ * @param names an array of task names
+ * @returns an array of Task objects
+ */
 export function createTasks(names: string[]): Task[] {
   return names.map((name, index) => {
     return {
@@ -12,6 +17,13 @@ export function createTasks(names: string[]): Task[] {
   });
 }
 
+/**
+ * Creates a Phase object given an id, name and array of Task objects
+ * @param id intended phase id
+ * @param name name/title of the phase
+ * @param tasks an array of Task objects
+ * @returns
+ */
 export function createPhase(id: number, name: string, tasks: Task[]): Phase {
   return {
     id,
@@ -21,6 +33,11 @@ export function createPhase(id: number, name: string, tasks: Task[]): Phase {
   };
 }
 
+/**
+ * Creates an array of phase objects, which in this case is our data set
+ * @param roadmap an array of RawPhase (i.e a partially processed Phase object)
+ * @returns
+ */
 export function assemble(roadmap: RawPhase[]): Phase[] {
   const phases: Phase[] = [];
 

@@ -2,6 +2,11 @@ import * as db from "../db";
 
 import { CompleteTaskDTO, Task } from "./roadmap.model";
 
+/**
+ * Marks a particular task as completed
+ * @param body the DTO containing: phaseId and taskId
+ * @returns the completed Task object
+ */
 export function completeTask(body: CompleteTaskDTO): Task {
   const { phaseId, taskId } = body;
 

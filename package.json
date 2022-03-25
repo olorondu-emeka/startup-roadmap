@@ -4,7 +4,11 @@
   "description": "a simple API that tracks a startup's progress at different stages",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run build && node ./dist",
+    "start:dev": "nodemon ./dist",
+    "watch": "tsc --watch -p ./tsconfig.json",
+    "build": " npm i -g typescript && tsc -p ./tsconfig.json",
+    "test": "jest --runInBand --detectOpenHandles --forceExit"
   },
   "repository": {
     "type": "git",

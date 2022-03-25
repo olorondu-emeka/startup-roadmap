@@ -40,6 +40,46 @@ npm/yarn run start:dev
 
 The project can be tested with the GraphiQL User Interface, which can be accessed in the browser via the URL: http://localhost:5000/graphql
 
+## Manual Testing
+The project can be manually tested on the Graphiql interaface (see section above) or on Postman. The following will be helpful:
+- query
+
+```js
+query{
+    getProgress{
+        id
+       name
+        is_completed
+       tasks{
+           id
+           name
+           is_completed
+       }
+    }
+}
+```
+
+- mutation
+```js
+mutation($body: CompleteTaskDTO) {
+    completeTask(body: $body){
+        id
+        name
+        is_completed
+    }
+}
+```
+
+- graphql variables
+```json
+{
+    "body": {
+        "phaseId": 1,
+        "taskId": 1
+    }
+}
+```
+
 ## Built With
 - [Express](https://expressjs.com/) - The Node.js web framework used
 - [Typescript](https://www.typescriptlang.org/) - The language used

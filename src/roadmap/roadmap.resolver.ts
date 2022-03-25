@@ -1,3 +1,5 @@
+import * as db from "../db";
+
 import { CompleteTaskDTO, Task } from "./roadmap.model";
 
 export function completeTask(body: CompleteTaskDTO): Task {
@@ -21,3 +23,11 @@ export function completeTask(body: CompleteTaskDTO): Task {
   const completedTask = db.completeTask(phaseId, taskId);
   return completedTask;
 }
+
+/**
+ * TODO:
+ * 1. create db functions and its methods
+ * 2. write testsetProgress feature
+ * 3. setup Github Actions for test
+ * 4. complete getProgress feature
+ */

@@ -1,6 +1,6 @@
 import * as db from "../db";
 
-import { CompleteTaskDTO, Task } from "./roadmap.model";
+import { CompleteTaskDTO, Phase, Task } from "./roadmap.model";
 
 /**
  * Marks a particular task as completed
@@ -27,6 +27,14 @@ export function completeTask(body: CompleteTaskDTO): Task {
 
   const completedTask = db.completeTask(phaseId, taskId);
   return completedTask;
+}
+
+/**
+ * Retrieves the progress attained so far across all phases.
+ * @returns the dataset (i.e, an array of Phase objects)
+ */
+export function getProgress(): Phase[] {
+  return db.getProgress();
 }
 
 /**

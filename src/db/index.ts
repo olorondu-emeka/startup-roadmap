@@ -1,4 +1,5 @@
-import { Task } from "roadmap/roadmap.model";
+import { Phase, Task } from "roadmap/roadmap.model";
+
 import { assemble } from "./helper";
 import { roadmap } from "./data";
 
@@ -27,4 +28,8 @@ export function getTask(phaseId: number, taskId: number): Task {
   const task = phase.tasks[taskId - 1];
 
   return task;
+}
+
+export function getProgress(): Phase[] {
+  return db;
 }

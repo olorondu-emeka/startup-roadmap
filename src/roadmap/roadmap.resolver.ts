@@ -36,11 +36,3 @@ export function completeTask(body: CompleteTaskDTO): Task {
 export function getProgress(): Phase[] {
   return db.getProgress();
 }
-
-/**
- * TODO:
- * 1. create db functions and its methods
- * 2. write testsetProgress feature
- * 3. setup Github Actions for test
- * 4. complete getProgress feature
- */

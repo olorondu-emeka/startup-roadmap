@@ -26,7 +26,7 @@ export function assemble(roadmap: RawPhase[]): Phase[] {
 
   roadmap.forEach((item, index) => {
     const tasks = createTasks(item.tasks);
-    phases.push(createPhase(index, item.title, tasks));
+    phases.push(createPhase(index + 1, item.title, tasks));
   });
 
   return phases;

@@ -14,9 +14,6 @@
     "noUnusedLocals": true,
     "moduleResolution": "node",
     "baseUrl": "./src",
-    "paths": {
-      "@app/config/": ["config/"]
-    },
     "typeRoots": ["./node_modules/@types", "typings"],
     "types": ["reflect-metadata", "jest", "node"],
     "esModuleInterop": true,

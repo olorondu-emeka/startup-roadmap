@@ -7,26 +7,31 @@ import { CompleteTaskDTO, Phase, Task } from "./roadmap.model";
  * @param body the DTO containing: phaseId and taskId
  * @returns the completed Task object
  */
-export function completeTask(body: CompleteTaskDTO): Task {
-  const { phaseId, taskId } = body;
+export function completeTask(args: any): Task {
+  try {
+    const body: CompleteTaskDTO = args.body;
+    const { phaseId, taskId } = body;
 
-  // edge case for the very first task in the roadmap
-  if (taskId === 1 && phaseId === 1) {
+    // edge case for the very first task in the roadmap
+    if (taskId === 1 && phaseId === 1) {
+      const completedTask = db.completeTask(phaseId, taskId);
+      return completedTask;
+    }
+
+    const resolvedPhaseId = taskId === 1 ? phaseId - 1 : phaseId;
+    const resolvedTaskId = taskId === 1 ? db.countPhaseTasks(resolvedPhaseId) : taskId - 1;
+
+    const previousTask = db.getTask(resolvedPhaseId, resolvedTaskId);
+
+    if (!previousTask.is_completed) {
+      throw new Error("Previous task is still pending");
+    }
+
     const completedTask = db.completeTask(phaseId, taskId);
     return completedTask;
+  } catch (error) {
+    throw error;
   }
-
-  const resolvedPhaseId = taskId === 1 ? phaseId - 1 : phaseId;
-  const resolvedTaskId = taskId === 1 ? db.countPhaseTasks(resolvedPhaseId) : taskId - 1;
-
-  const previousTask = db.getTask(resolvedPhaseId, resolvedTaskId);
-
-  if (!previousTask.is_completed) {
-    throw new Error("Previous task is still pending");
-  }
-
-  const completedTask = db.completeTask(phaseId, taskId);
-  return completedTask;
 }
 
 /**
@@ -34,5 +39,10 @@ export function completeTask(body: CompleteTaskDTO): Task {
  * @returns the dataset (i.e, an array of Phase objects)
  */
 export function getProgress(): Phase[] {
-  return db.getProgress();
+  try {
+    return db.getProgress();
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
 }
